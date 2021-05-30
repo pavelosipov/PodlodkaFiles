@@ -18,3 +18,9 @@ private var state: State { dbState }
 private var stateUpdater: StateUpdater { dbStateUpdater }
 ```
 Happy coding!
+
+# Links
+Here are some materials for diving deeper. Everything is in Russian.
+- [[Хабр] Блеск и нищета key-value базы данных LMDB в приложениях для iOS](https://habr.com/ru/company/mailru/blog/480850/)
+- [[YouTube] Видеоверсия статьи на Хабре в виде выступления на AppsConf](https://appsconf.ru/spb/2019/abstracts/5431)
+- [[YouTube] Укрощаем нормализованное состояние: граф объекты и санитайзеры](https://youtu.be/SXzDR6GtxFw)
