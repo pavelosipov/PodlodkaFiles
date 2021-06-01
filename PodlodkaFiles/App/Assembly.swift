@@ -68,8 +68,8 @@ final class Assembly {
     DbStateUpdater(state: dbState)
   }()
 
-  private var state: State { ramState.value }
-  private var stateUpdater: StateUpdater { ramStateUpdater }
+  private var state: State { dbState }
+  private var stateUpdater: StateUpdater { dbStateUpdater }
 
   private lazy var authencticator: Authencticator = {
     Authencticator(accountDb: accountDb)
