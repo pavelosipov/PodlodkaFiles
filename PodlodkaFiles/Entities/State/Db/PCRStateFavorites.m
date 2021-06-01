@@ -100,6 +100,10 @@ typedef BOOL(^PCRStateFavoritesPredicate)(const PCRFavoriteKey *key, BOOL *stop)
                      txn:(id<PCRDbWriteTxn>)txn
                    error:(NSError **)error {
   PCR_CHECK(txn);
+  PCR_CHECK_VAR(result, [self containsNodeWithId:nodeId txn:txn error:error], return NO);
+  if (result.boolValue) {
+    return YES;
+  }
   var key = PCRFavoriteKeyMake(nodeId, date.timeIntervalSince1970);
   var dbKey = PCRFavoriteKeyMakeVal(&key);
   var dbValue = (MDB_val) { .mv_size = 0, .mv_data = nil };
