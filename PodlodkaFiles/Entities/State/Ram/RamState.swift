@@ -28,13 +28,13 @@ struct RamState: State, Codable {
   }
 
   var favoriteNodes: [Node] {
-    return favorites.entities.compactMap {
+    favorites.entities.compactMap {
       node(with: $0.id)
     }
   }
 
   mutating func favoriteNode(id: NodeId, at time: Date) throws {
-    guard nodes.contains(id: id) else { throw RamState.Error.nodeNotFound }
+    guard nodes.contains(id: id) else { throw Self.Error.nodeNotFound }
     guard !favorites.contains(id: id) else { return }
     favorites.insert(.init(time: time, id: id))
   }

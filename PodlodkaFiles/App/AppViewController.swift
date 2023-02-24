@@ -1,5 +1,5 @@
-import UIKit
 import Combine
+import UIKit
 
 final class AppViewController: UIViewController {
   private var subscriptions = Set<AnyCancellable>()

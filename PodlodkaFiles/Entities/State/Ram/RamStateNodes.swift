@@ -68,7 +68,7 @@ extension RamState.Tables.Nodes.Entity.File {
   }
 }
 
-// MARK - Codable
+// MARK: - Codable
 
 extension RamState.Tables.Nodes.Entity.Details {
   init(from decoder: Decoder) throws {
@@ -80,7 +80,7 @@ extension RamState.Tables.Nodes.Entity.Details {
       throw DecodingError.dataCorrupted(
         DecodingError.Context(
           codingPath: decoder.codingPath,
-          debugDescription:"Cannot decode \(Self.self)"
+          debugDescription: "Cannot decode \(Self.self)"
         )
       )
     }

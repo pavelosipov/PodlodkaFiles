@@ -31,7 +31,7 @@ struct DbNode: Node {
     case is PCRFolderDetails:
       return .folder(details: Folder(state: state, model: model))
     default:
-      fatalError()
+      fatalError("Unknown type: \(model.details.type)")
     }
   }
 

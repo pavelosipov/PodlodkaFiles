@@ -1,0 +1,25 @@
+opt_out_usage
+default_platform(:ios)
+
+platform :ios do
+  lane :lint do
+    swiftlint(
+      mode: :lint,
+      strict: true,
+      raise_if_swiftlint_error: true,
+      ignore_exit_status: false
+    )
+  end
+
+  lane :distribute_app do |options|
+    appcenter_upload(
+      api_token: options[:api_token],
+      owner_name: 'pavel.osipov',
+      app_name: 'PodlodkaFiles',
+      file: options[:ipa_path],
+      notify_testers: false,
+      strict: 'true',
+      dsym: options[:dsym_path]
+    )
+  end
+end

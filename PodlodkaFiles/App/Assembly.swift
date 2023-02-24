@@ -26,10 +26,12 @@ final class Assembly {
         key: "account"
       )
     ).eraseToAnyValueStore()
+    // swiftlint:disable redundant_nil_coalescing
     return .init(
-      value: (try? valueStore.load()) ?? nil,
+      value: try? valueStore.load() ?? nil,
       valueStore: valueStore
     )
+    // swiftlint:enable redundant_nil_coalescing
   }()
 
   private lazy var ramState: PersistableState = {
@@ -60,7 +62,7 @@ final class Assembly {
       let state = try PCRState(path: path.path)
       return DbState(state: state)
     } catch {
-      fatalError()
+      fatalError(String(describing: error))
     }
   }()
 

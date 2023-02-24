@@ -27,7 +27,7 @@ typealias NodeId = Tagged<NodeIdTag, UInt32>
 
 typealias NodeSize = Int
 
-// MARK - Extensions
+// MARK: - Extensions
 
 extension NodeDto {
   static var emptyRootFolder: NodeDto {
@@ -54,7 +54,7 @@ extension NodeDto {
     into result: inout Result,
     parentId: NodeId,
     update: (inout Result, NodeDto, NodeId) -> Void
-  ) -> Void {
+  ) {
     update(&result, self, parentId)
     if case let .folder(folder) = details {
       folder.children.forEach { child in

@@ -1,5 +1,5 @@
-import UIKit
 import Combine
+import UIKit
 
 final class FilesViewController: UITableViewController {
   enum Model {
@@ -47,7 +47,7 @@ final class FilesViewController: UITableViewController {
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     let node = nodes[indexPath.row]
     guard case let .folder(details) = node.details else { return }
-    let subfolderViewController = FilesViewController(
+    let subfolderViewController = Self(
       model: .folder(node: details),
       stateUpdater: stateUpdater,
       filesLoader: filesLoader
@@ -101,7 +101,7 @@ final class FilesViewController: UITableViewController {
   private func toggleFavoriteStatus(for node: Node) {
     let actionPublisher = node.isFavorite
       ? stateUpdater.unfavoriteNode(id: node.id)
-      : stateUpdater.favoriteNode(id: node.id, at: Date());
+      : stateUpdater.favoriteNode(id: node.id, at: Date())
     actionPublisher
       .receive(on: DispatchQueue.main)
       .sink(
@@ -115,7 +115,7 @@ final class FilesViewController: UITableViewController {
       .store(in: &self.subscriptions)
   }
 
-  // MARK - Private
+  // MARK: - Private
 
   private func updateContent(state: State) {
     if let model = state.actualModel(for: model) {
@@ -127,7 +127,8 @@ final class FilesViewController: UITableViewController {
     }
   }
 
-  @objc private func loadContent() {
+  @objc
+  private func loadContent() {
     filesLoader.loadFiles()
       .receive(on: DispatchQueue.main)
       .sink(

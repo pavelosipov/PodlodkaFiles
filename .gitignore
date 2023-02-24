@@ -1,5 +1,13 @@
 # macOS
 .DS_Store
 
+# Tools
+build/
+fastlane/test_output/
+fastlane/report.xml
+
 # Xcode
 xcuserdata/
+DerivedData/
+.swiftpm/config/registries.json
+.swiftpm/xcode/package.xcworkspace/contents.xcworkspacedata

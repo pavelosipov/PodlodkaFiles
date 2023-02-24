@@ -6,12 +6,14 @@ final class RamStateUpdater: StateUpdater {
   private let queue = DispatchQueue(label: "io.podlodka.StateUpdater")
 
   var updatesPublisher: AnyPublisher<State, Never> {
+    // swiftlint:disable array_init
     state
       .publisher
       .map { state -> State in
         state
       }
       .eraseToAnyPublisher()
+    // swiftlint:enable array_init
   }
 
   func resetNodes(with rootNode: NodeDto) -> AnyPublisher<Never, Error> {

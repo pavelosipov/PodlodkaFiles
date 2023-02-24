@@ -1,5 +1,5 @@
-import Foundation
 import Combine
+import Foundation
 
 enum AuthApi {
   static func authenticate(name: String, password: String) -> Future<Account, Error> {

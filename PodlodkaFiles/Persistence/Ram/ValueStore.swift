@@ -56,7 +56,7 @@ final class EphemeralValueStore<Value>: ValueStore {
   }
 
   func load() throws -> Value? {
-    return value
+    value
   }
 
   func erase() throws {
