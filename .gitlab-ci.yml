@@ -45,6 +45,6 @@ build_and_deploy_app:
       CODE_SIGNING_ALLOWED=YES | xcbeautify
     - |
       bundle exec fastlane ios distribute_app \
-      ipa_path:"build/app/PodlodkaFiles.ipa" \
-      dsym_path:"build/app/PodlodkaFiles.dSYM.zip" \
+      ipa_path:"$(pwd)/build/app/PodlodkaFiles.ipa" \
+      dsym_path:"$(pwd)/build/app/PodlodkaFiles.dSYM.zip" \
       api_token:"${APPCENTER_API_TOKEN}"
