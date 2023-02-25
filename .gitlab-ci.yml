@@ -15,6 +15,8 @@ workflow:
 
 before_script:
   - eval "$(rbenv init - zsh)"
+  - brew bundle
+  - bundle install
 
 .base: &base_job
   tags:
@@ -24,10 +26,25 @@ lint_app:
   <<: *base_job
   stage: linting
   script:
-    - rake lint_app_wired
+    - bundle exec rubocop
+    - bundle exec fastlane ios lint
 
 build_and_deploy_app:
   <<: *base_job
   stage: building
   script:
-    - rake build_and_deploy_app_wired
+    - |
+      set -o pipefail && \
+      xcodebuild IDEBuildOperationMaxNumberOfConcurrentCompileTasks=12 archive \
+      -project "PodlodkaFiles.xcodeproj" \
+      -scheme "PodlodkaFiles" \
+      -configuration "Release" \
+      -destination "generic/platform=iOS" \
+      -archivePath "build/app/PodlodkaFiles.xcarchive" \
+      CODE_SIGNING_REQUIRED=YES \
+      CODE_SIGNING_ALLOWED=YES | xcbeautify
+    - |
+      bundle exec fastlane ios distribute_app \
+      ipa_path:"build/app/PodlodkaFiles.ipa" \
+      dsym_path:"build/app/PodlodkaFiles.dSYM.zip" \
+      api_token:"${APPCENTER_API_TOKEN}"
