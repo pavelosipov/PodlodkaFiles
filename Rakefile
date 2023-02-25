@@ -20,7 +20,7 @@ end
 
 desc 'Runs RuboCop'
 task :lint_ci do
-  Rake.sh 'bundle exec rubocop'
+  $pipeline.run :lint_ci
 end
 
 desc 'Runs Swiftlint'
