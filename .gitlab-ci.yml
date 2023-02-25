@@ -1,0 +1,40 @@
+stages:
+  - linting
+  - building
+  - deploying
+
+variables:
+  LC_ALL: "en_US.UTF-8"
+  LANG: "en_US.UTF-8"
+  FASTLANE_OPT_OUT_USAGE: "YES"
+
+workflow:
+  rules:
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "push"
+    - if: $CI_COMMIT_REF_NAME == $CI_DEFAULT_BRANCH && $CI_PIPELINE_SOURCE == "web"
+    - if: $CI_PIPELINE_SOURCE == "merge_request_event"
+
+before_script:
+  - eval "$(rbenv init - zsh)"
+
+.base: &base_job
+  tags:
+    - pavelosipov-homebook-runner
+
+lint_app:
+  <<: *base_job
+  stage: linting
+  script:
+    - rake lint_app_wired
+
+build_app:
+  <<: *base_job
+  stage: building
+  script:
+    - rake build_app_wired
+
+deploy_app:
+  <<: *base_job
+  stage: deploying
+  script:
+    - rake deploy_app_wired
