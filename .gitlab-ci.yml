@@ -43,6 +43,11 @@ build_and_deploy_app:
       -archivePath "build/app/PodlodkaFiles.xcarchive" \
       CODE_SIGNING_REQUIRED=YES \
       CODE_SIGNING_ALLOWED=YES | xcbeautify
+    - mkdir -p build/app/Payload
+    - cp -r build/app/PodlodkaFiles.xcarchive/Products/Applications/* build/app/Payload
+    - xcrun ditto -ck --rsrc --sequesterRsrc --keepParent build/app/Payload build/app/PodlodkaFiles.ipa
+    - rm -fr build/app/Payload
+    - xcrun ditto -ck --rsrc --sequesterRsrc --keepParent build/app/PodlodkaFiles.xcarchive/dSYMs/* build/app/PodlodkaFiles.dSYM.zip
     - |
       bundle exec fastlane ios distribute_app \
       ipa_path:"$(pwd)/build/app/PodlodkaFiles.ipa" \
