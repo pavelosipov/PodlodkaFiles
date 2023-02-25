@@ -31,16 +31,13 @@ task :build_app do
   $pipeline.run :build_app
 end
 
-desc 'Runs lint_app step with its dependencies'
-task build_app_wired: %i[install_tools install_gems build_app]
-
 desc 'Uploads to AppCenter'
 task :deploy_app do
   $pipeline.run :deploy_app
 end
 
 desc 'Runs lint_app step with its dependencies'
-task deploy_app_wired: %i[install_tools install_gems deploy_app]
+task build_and_deploy_app_wired: %i[install_tools install_gems build_app deploy_app]
 
 desc 'Performs all steps oredred by Pipefile'
 task :all do

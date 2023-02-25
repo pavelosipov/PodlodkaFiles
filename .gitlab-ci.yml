@@ -1,7 +1,6 @@
 stages:
   - linting
   - building
-  - deploying
 
 variables:
   LC_ALL: "en_US.UTF-8"
@@ -27,14 +26,8 @@ lint_app:
   script:
     - rake lint_app_wired
 
-build_app:
+build_and_deploy_app:
   <<: *base_job
   stage: building
   script:
-    - rake build_app_wired
-
-deploy_app:
-  <<: *base_job
-  stage: deploying
-  script:
-    - rake deploy_app_wired
+    - rake build_and_deploy_app_wired
