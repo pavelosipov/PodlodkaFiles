@@ -9,10 +9,6 @@ module XcodeBuild
 
   extend self
 
-  def resolve_dependencies
-    Rake.sh 'set -o pipefail && xcodebuild -resolvePackageDependencies -onlyUsePackageVersionsFromResolvedFile | xcbeautify'
-  end
-
   def build_archive(options)
     run("archive #{stringify_options(options)} | xcbeautify")
   end
