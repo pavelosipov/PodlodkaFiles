@@ -18,6 +18,11 @@ task :install_gems do
   $pipeline.run :install_gems
 end
 
+desc 'Runs RuboCop'
+task :lint_ci do
+  Rake.sh 'bundle exec rubocop'
+end
+
 desc 'Runs Swiftlint'
 task :lint_app do
   $pipeline.run :lint_app

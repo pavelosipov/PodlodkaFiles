@@ -2,13 +2,7 @@ require 'rake'
 require_relative 'secrets_spec'
 
 class DeployAppStep
-  attr_accessor :api_token
-  attr_accessor :ipa_path
-  attr_accessor :dsym_path
-
-  def is_active?
-    [@ipa_path, @dsym_path].all? { |path| File.exist? path }
-  end
+  attr_accessor :api_token, :ipa_path, :dsym_path
 
   def run
     Rake.sh 'bundle exec fastlane ios distribute_app ' \

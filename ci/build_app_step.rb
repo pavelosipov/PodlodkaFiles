@@ -4,12 +4,7 @@ require_relative 'plist_buddy'
 require_relative 'xcodebuild'
 
 class BuildAppStep
-  attr_accessor :build_path
-  attr_accessor :project_path
-  attr_accessor :scheme
-  attr_accessor :target
-  attr_accessor :destination
-  attr_accessor :sign
+  attr_accessor :build_path, :project_path, :scheme, :target, :destination, :sign
 
   def archive_path
     "#{@build_path}/#{@target}.xcarchive"

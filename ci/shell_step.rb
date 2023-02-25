@@ -1,8 +1,7 @@
 require 'rake'
 
 class ShellStep
-  attr_accessor :script
-  attr_accessor :is_active
+  attr_accessor :script, :is_active
 
   def initialize
     @is_active = true

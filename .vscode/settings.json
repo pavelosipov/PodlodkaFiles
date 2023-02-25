@@ -1,0 +1,32 @@
+{
+  "debug.onTaskErrors": "showErrors",
+  "editor.formatOnSave": true,
+  "editor.insertSpaces": true,
+  "editor.semanticHighlighting.enabled": true,
+  "editor.suggestSelection": "first",
+  "editor.suggest.insertMode": "replace",
+  "editor.tabSize": 2,
+  "editor.trimAutoWhitespace": true,
+  "explorer.autoReveal": false,
+  "explorer.confirmDelete": false,
+  "files.exclude": {
+    "**/.classpath": true,
+    "**/.project": true,
+    "**/.settings": true,
+    "**/.factorypath": true
+  },
+  "files.trimTrailingWhitespace": true,
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "workbench.editor.limit.enabled": true,
+  "workbench.editor.limit.value": 4,
+  "ruby.useBundler": true,
+  "ruby.useLanguageServer": true,
+  "ruby.intellisense": "rubyLocate",
+  "ruby.lint": {
+    "rubocop": {
+      "useBundler": true
+    }
+  },
+  "ruby.format": "rubocop",
+  "solargraph.useBundler": false,
+}

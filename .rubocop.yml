@@ -1,0 +1,39 @@
+require:
+  - rubocop-rake
+
+AllCops:
+  NewCops: enable
+
+Layout/EmptyLineAfterGuardClause:
+  Enabled: false
+
+Metrics/MethodLength:
+  Max: 20
+
+Naming/FileName:
+  Exclude:
+    - 'fastlane/Fastfile'
+    - 'fastlane/Pluginfile'
+    - 'Brewfile'
+    - 'Pipefile'
+    - 'Rakefile'
+
+# Naming/MethodParameterName:
+#   AllowedNames:
+#     - fs
+#     - n
+
+Style/MethodCallWithoutArgsParentheses:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/GlobalVars:
+  Enabled: false
+
+Style/HashSyntax:
+  EnforcedShorthandSyntax: either

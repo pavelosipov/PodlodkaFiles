@@ -6,6 +6,7 @@ gem 'rubocop-rake'
 
 group :development, optional: true do
   gem 'solargraph'
+  gem 'yard'
 end
 
 plugins_path = File.join(File.dirname(__FILE__), 'fastlane', 'Pluginfile')

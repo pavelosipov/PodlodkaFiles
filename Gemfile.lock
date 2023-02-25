@@ -271,6 +271,7 @@ DEPENDENCIES
   rubocop
   rubocop-rake
   solargraph
+  yard
 
 BUNDLED WITH
    2.4.7

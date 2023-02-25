@@ -1,13 +1,11 @@
 require_relative 'build_app_step'
 require_relative 'clear_caches_step'
 require_relative 'deploy_app_step'
-require_relative 'pipeline_spec'
 require_relative 'secrets_spec'
 require_relative 'shell_step'
 
 class PipelineSpec
-  attr_reader :type
-  attr_reader :secrets
+  attr_reader :type, :secrets
   attr_accessor :build_path
 
   def initialize(path)
@@ -15,7 +13,7 @@ class PipelineSpec
     @secrets = SecretsSpec.new(File.expand_path('~/.local_ci/PodlodkaFiles/Secretsfile')).secrets
     @build_path = 'build'
     @steps = {}
-    instance_eval(File.read path)
+    instance_eval(File.read(path))
   end
 
   def run(tag)

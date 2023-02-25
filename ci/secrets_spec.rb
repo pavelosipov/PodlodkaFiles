@@ -2,7 +2,7 @@ class SecretsSpec
   attr_reader :secrets
 
   def initialize(path)
-    instance_eval(File.read path)
+    instance_eval(File.read(path))
   end
 
   def variables(value)
