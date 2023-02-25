@@ -1,0 +1,19 @@
+name: Demo
+on:
+  push:
+    branches:
+      - main
+jobs:
+  lint_app:
+    runs-on: self-hosted
+    steps:
+      - name: checkout
+        uses: actions/checkout@v2
+      - name: lint_app
+        run: rake lint_app_wired
+      - name: build_and_deploy_app
+        run: rake build_and_deploy_app_wired
+    env:
+      LC_ALL: "en_US.UTF-8"
+      LANG: "en_US.UTF-8"
+      FASTLANE_OPT_OUT_USAGE: "YES"
