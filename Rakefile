@@ -23,12 +23,28 @@ task :lint_app do
   $pipeline.run :lint_app
 end
 
+desc 'Runs lint_app step with its dependencies'
+task lint_app_wired: %i[install_tools install_gems lint_app]
+
 desc 'Builds both ipa and dsym archives'
 task :build_app do
   $pipeline.run :build_app
 end
 
-desc 'Upload to AppCenter'
+desc 'Runs lint_app step with its dependencies'
+task build_app_wired: %i[install_tools install_gems build_app]
+
+desc 'Uploads to AppCenter'
 task :deploy_app do
   $pipeline.run :deploy_app
 end
+
+desc 'Runs lint_app step with its dependencies'
+task deploy_app_wired: %i[install_tools install_gems deploy_app]
+
+desc 'Performs all steps oredred by Pipefile'
+task :all do
+  $pipeline.run_all
+end
+
+task default: :all

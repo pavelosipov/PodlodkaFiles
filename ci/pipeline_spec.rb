@@ -22,6 +22,10 @@ class PipelineSpec
     @steps[tag].run()
   end
 
+  def run_all
+    @steps.values.map!(&:run)
+  end
+
   def sh(tag)
     step = ShellStep.new
     yield step
