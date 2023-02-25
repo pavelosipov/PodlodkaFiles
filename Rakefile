@@ -29,7 +29,7 @@ task :lint_app do
 end
 
 desc 'Runs lint_app step with its dependencies'
-task lint_app_wired: %i[install_tools install_gems lint_app]
+task lint_app_wired: %i[install_tools install_gems lint_ci lint_app]
 
 desc 'Builds both ipa and dsym archives'
 task :build_app do
